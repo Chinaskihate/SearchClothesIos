@@ -3,18 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4022099A27DF662200963282 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 4022099927DF662200963282 /* SwiftyJSON */; };
+		4022099D27DF666300963282 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4022099C27DF666300963282 /* SDWebImageSwiftUI */; };
+		402209A027DF723200963282 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022099F27DF723200963282 /* User.swift */; };
+		402209A227DF7BC900963282 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402209A127DF7BC900963282 /* DataStorage.swift */; };
+		402209A427DF7F1100963282 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402209A327DF7F1100963282 /* MainViewController.swift */; };
+		402209A727DF86E500963282 /* SearchPostsControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402209A627DF86E500963282 /* SearchPostsControl.swift */; };
+		402209AA27DF92CD00963282 /* GetPostsCommandDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402209A927DF92CD00963282 /* GetPostsCommandDto.swift */; };
+		402209AC27DFB63000963282 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402209AB27DFB63000963282 /* PostCell.swift */; };
+		402209AE27DFB71700963282 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402209AD27DFB71700963282 /* PostView.swift */; };
+		402209B127DFC2FC00963282 /* UIViewPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402209B027DFC2FC00963282 /* UIViewPin.swift */; };
+		402209B327DFCC8200963282 /* ColorConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402209B227DFCC8200963282 /* ColorConverter.swift */; };
+		402209B527DFDD3A00963282 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402209B427DFDD3A00963282 /* TagCell.swift */; };
+		402209B727DFDD9A00963282 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402209B627DFDD9A00963282 /* TagView.swift */; };
+		4051AFA627DE610700D8FEE5 /* LoginCommandDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051AFA527DE610700D8FEE5 /* LoginCommandDto.swift */; };
 		40A5E42527DE1D6E0016DEA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A5E42427DE1D6E0016DEA7 /* AppDelegate.swift */; };
 		40A5E42727DE1D6E0016DEA7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A5E42627DE1D6E0016DEA7 /* SceneDelegate.swift */; };
-		40A5E42927DE1D6E0016DEA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A5E42827DE1D6E0016DEA7 /* ViewController.swift */; };
-		40A5E42C27DE1D6E0016DEA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A5E42A27DE1D6E0016DEA7 /* Main.storyboard */; };
+		40A5E42927DE1D6E0016DEA7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A5E42827DE1D6E0016DEA7 /* LoginViewController.swift */; };
 		40A5E42E27DE1D6E0016DEA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40A5E42D27DE1D6E0016DEA7 /* Assets.xcassets */; };
 		40A5E43127DE1D6F0016DEA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A5E42F27DE1D6F0016DEA7 /* LaunchScreen.storyboard */; };
 		40A5E43C27DE1D6F0016DEA7 /* SearchClothesIosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A5E43B27DE1D6F0016DEA7 /* SearchClothesIosTests.swift */; };
 		40A5E44727DE1D6F0016DEA7 /* SearchClothesIosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A5E44627DE1D6F0016DEA7 /* SearchClothesIosUITests.swift */; };
+		58EF68005692F3D4C49A313E /* Pods_SearchClothesIos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECC0EEAB349B7F5F28D4EF5 /* Pods_SearchClothesIos.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +49,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4022099F27DF723200963282 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		402209A127DF7BC900963282 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
+		402209A327DF7F1100963282 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		402209A627DF86E500963282 /* SearchPostsControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPostsControl.swift; sourceTree = "<group>"; };
+		402209A927DF92CD00963282 /* GetPostsCommandDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostsCommandDto.swift; sourceTree = "<group>"; };
+		402209AB27DFB63000963282 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		402209AD27DFB71700963282 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		402209B027DFC2FC00963282 /* UIViewPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPin.swift; sourceTree = "<group>"; };
+		402209B227DFCC8200963282 /* ColorConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConverter.swift; sourceTree = "<group>"; };
+		402209B427DFDD3A00963282 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		402209B627DFDD9A00963282 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		4051AFA527DE610700D8FEE5 /* LoginCommandDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCommandDto.swift; sourceTree = "<group>"; };
 		40A5E42127DE1D6E0016DEA7 /* SearchClothesIos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchClothesIos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40A5E42427DE1D6E0016DEA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40A5E42627DE1D6E0016DEA7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		40A5E42827DE1D6E0016DEA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		40A5E42B27DE1D6E0016DEA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		40A5E42827DE1D6E0016DEA7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		40A5E42D27DE1D6E0016DEA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40A5E43027DE1D6F0016DEA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40A5E43227DE1D6F0016DEA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +74,9 @@
 		40A5E44227DE1D6F0016DEA7 /* SearchClothesIosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchClothesIosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		40A5E44627DE1D6F0016DEA7 /* SearchClothesIosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchClothesIosUITests.swift; sourceTree = "<group>"; };
 		40A5E44827DE1D6F0016DEA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7EE99D637DC31AA936246916 /* Pods-SearchClothesIos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchClothesIos.debug.xcconfig"; path = "Target Support Files/Pods-SearchClothesIos/Pods-SearchClothesIos.debug.xcconfig"; sourceTree = "<group>"; };
+		81CD817B9A704C5CF056F61A /* Pods-SearchClothesIos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchClothesIos.release.xcconfig"; path = "Target Support Files/Pods-SearchClothesIos/Pods-SearchClothesIos.release.xcconfig"; sourceTree = "<group>"; };
+		CECC0EEAB349B7F5F28D4EF5 /* Pods_SearchClothesIos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchClothesIos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +84,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4022099D27DF666300963282 /* SDWebImageSwiftUI in Frameworks */,
+				4022099A27DF662200963282 /* SwiftyJSON in Frameworks */,
+				58EF68005692F3D4C49A313E /* Pods_SearchClothesIos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +107,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4022099E27DF721500963282 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4022099F27DF723200963282 /* User.swift */,
+				402209A127DF7BC900963282 /* DataStorage.swift */,
+			);
+			name = Models;
+			path = SearchClothesIos/Models;
+			sourceTree = SOURCE_ROOT;
+		};
+		402209A527DF86BB00963282 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				402209A627DF86E500963282 /* SearchPostsControl.swift */,
+				402209AB27DFB63000963282 /* PostCell.swift */,
+				402209AD27DFB71700963282 /* PostView.swift */,
+				402209B427DFDD3A00963282 /* TagCell.swift */,
+				402209B627DFDD9A00963282 /* TagView.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		402209A827DF928100963282 /* FindPost */ = {
+			isa = PBXGroup;
+			children = (
+				402209A927DF92CD00963282 /* GetPostsCommandDto.swift */,
+			);
+			name = FindPost;
+			path = SearchClothesIos/Jsons/FindPost;
+			sourceTree = SOURCE_ROOT;
+		};
+		402209AF27DFC2E200963282 /* UIServices */ = {
+			isa = PBXGroup;
+			children = (
+				402209B027DFC2FC00963282 /* UIViewPin.swift */,
+				402209B227DFCC8200963282 /* ColorConverter.swift */,
+			);
+			name = UIServices;
+			path = SearchClothesIos/UIServices;
+			sourceTree = SOURCE_ROOT;
+		};
+		4051AFA327DE60B500D8FEE5 /* Jsons */ = {
+			isa = PBXGroup;
+			children = (
+				402209A827DF928100963282 /* FindPost */,
+				4051AFA427DE60C300D8FEE5 /* Authentication */,
+			);
+			name = Jsons;
+			path = SearchClothesIos/Jsons;
+			sourceTree = SOURCE_ROOT;
+		};
+		4051AFA427DE60C300D8FEE5 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4051AFA527DE610700D8FEE5 /* LoginCommandDto.swift */,
+			);
+			name = Authentication;
+			path = SearchClothesIos/Jsons/Authentication;
+			sourceTree = SOURCE_ROOT;
+		};
 		40A5E41827DE1D6E0016DEA7 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +174,8 @@
 				40A5E43A27DE1D6F0016DEA7 /* SearchClothesIosTests */,
 				40A5E44527DE1D6F0016DEA7 /* SearchClothesIosUITests */,
 				40A5E42227DE1D6E0016DEA7 /* Products */,
+				49DBE82EF10AA2B86E249F3F /* Pods */,
+				4A664670E1D8FAFBC789582B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,10 +192,13 @@
 		40A5E42327DE1D6E0016DEA7 /* SearchClothesIos */ = {
 			isa = PBXGroup;
 			children = (
+				402209AF27DFC2E200963282 /* UIServices */,
+				402209A527DF86BB00963282 /* Controls */,
+				4022099E27DF721500963282 /* Models */,
+				4051AFA327DE60B500D8FEE5 /* Jsons */,
+				40A5E45627DE26040016DEA7 /* Controllers */,
 				40A5E42427DE1D6E0016DEA7 /* AppDelegate.swift */,
 				40A5E42627DE1D6E0016DEA7 /* SceneDelegate.swift */,
-				40A5E42827DE1D6E0016DEA7 /* ViewController.swift */,
-				40A5E42A27DE1D6E0016DEA7 /* Main.storyboard */,
 				40A5E42D27DE1D6E0016DEA7 /* Assets.xcassets */,
 				40A5E42F27DE1D6F0016DEA7 /* LaunchScreen.storyboard */,
 				40A5E43227DE1D6F0016DEA7 /* Info.plist */,
@@ -128,6 +224,33 @@
 			path = SearchClothesIosUITests;
 			sourceTree = "<group>";
 		};
+		40A5E45627DE26040016DEA7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				40A5E42827DE1D6E0016DEA7 /* LoginViewController.swift */,
+				402209A327DF7F1100963282 /* MainViewController.swift */,
+			);
+			name = Controllers;
+			path = SearchClothesIos/Controllers;
+			sourceTree = SOURCE_ROOT;
+		};
+		49DBE82EF10AA2B86E249F3F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7EE99D637DC31AA936246916 /* Pods-SearchClothesIos.debug.xcconfig */,
+				81CD817B9A704C5CF056F61A /* Pods-SearchClothesIos.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4A664670E1D8FAFBC789582B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CECC0EEAB349B7F5F28D4EF5 /* Pods_SearchClothesIos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,15 +258,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40A5E44B27DE1D6F0016DEA7 /* Build configuration list for PBXNativeTarget "SearchClothesIos" */;
 			buildPhases = (
+				EE6965A4B25BB1B8A0D1495F /* [CP] Check Pods Manifest.lock */,
 				40A5E41D27DE1D6E0016DEA7 /* Sources */,
 				40A5E41E27DE1D6E0016DEA7 /* Frameworks */,
 				40A5E41F27DE1D6E0016DEA7 /* Resources */,
+				4A9BAE7434DA2846151BA0D5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SearchClothesIos;
+			packageProductDependencies = (
+				4022099927DF662200963282 /* SwiftyJSON */,
+				4022099C27DF666300963282 /* SDWebImageSwiftUI */,
+			);
 			productName = SearchClothesIos;
 			productReference = 40A5E42127DE1D6E0016DEA7 /* SearchClothesIos.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +344,10 @@
 				Base,
 			);
 			mainGroup = 40A5E41827DE1D6E0016DEA7;
+			packageReferences = (
+				4022099827DF662200963282 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				4022099B27DF666300963282 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 40A5E42227DE1D6E0016DEA7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,7 +366,6 @@
 			files = (
 				40A5E43127DE1D6F0016DEA7 /* LaunchScreen.storyboard in Resources */,
 				40A5E42E27DE1D6E0016DEA7 /* Assets.xcassets in Resources */,
-				40A5E42C27DE1D6E0016DEA7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,12 +385,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4A9BAE7434DA2846151BA0D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SearchClothesIos/Pods-SearchClothesIos-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SearchClothesIos/Pods-SearchClothesIos-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SearchClothesIos/Pods-SearchClothesIos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE6965A4B25BB1B8A0D1495F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SearchClothesIos-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		40A5E41D27DE1D6E0016DEA7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40A5E42927DE1D6E0016DEA7 /* ViewController.swift in Sources */,
+				402209B527DFDD3A00963282 /* TagCell.swift in Sources */,
+				402209AE27DFB71700963282 /* PostView.swift in Sources */,
+				402209B327DFCC8200963282 /* ColorConverter.swift in Sources */,
+				402209A027DF723200963282 /* User.swift in Sources */,
+				402209AC27DFB63000963282 /* PostCell.swift in Sources */,
+				402209A427DF7F1100963282 /* MainViewController.swift in Sources */,
+				402209AA27DF92CD00963282 /* GetPostsCommandDto.swift in Sources */,
+				40A5E42927DE1D6E0016DEA7 /* LoginViewController.swift in Sources */,
+				402209B127DFC2FC00963282 /* UIViewPin.swift in Sources */,
+				402209A727DF86E500963282 /* SearchPostsControl.swift in Sources */,
+				4051AFA627DE610700D8FEE5 /* LoginCommandDto.swift in Sources */,
+				402209B727DFDD9A00963282 /* TagView.swift in Sources */,
+				402209A227DF7BC900963282 /* DataStorage.swift in Sources */,
 				40A5E42527DE1D6E0016DEA7 /* AppDelegate.swift in Sources */,
 				40A5E42727DE1D6E0016DEA7 /* SceneDelegate.swift in Sources */,
 			);
@@ -296,14 +482,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		40A5E42A27DE1D6E0016DEA7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				40A5E42B27DE1D6E0016DEA7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		40A5E42F27DE1D6F0016DEA7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -433,6 +611,7 @@
 		};
 		40A5E44C27DE1D6F0016DEA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EE99D637DC31AA936246916 /* Pods-SearchClothesIos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -452,6 +631,7 @@
 		};
 		40A5E44D27DE1D6F0016DEA7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81CD817B9A704C5CF056F61A /* Pods-SearchClothesIos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -593,6 +773,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4022099827DF662200963282 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		4022099B27DF666300963282 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4022099927DF662200963282 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4022099827DF662200963282 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		4022099C27DF666300963282 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4022099B27DF666300963282 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 40A5E41927DE1D6E0016DEA7 /* Project object */;
 }
