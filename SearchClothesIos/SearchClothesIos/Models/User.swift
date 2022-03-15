@@ -31,6 +31,10 @@ struct Post: Codable {
     }
 }
 
+struct TagList: Codable {
+    let tags: [Tag]
+}
+
 // MARK: - Tag
 struct Tag: Codable {
     let id, creatorID, name: String

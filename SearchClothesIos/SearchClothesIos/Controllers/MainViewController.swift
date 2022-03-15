@@ -59,20 +59,26 @@ class MainViewController: UIViewController {
         mainControl = control
         view.addSubview(mainControl)
         setupMainControl()
+        buttonCreatedPosts.backgroundColor = .clear
+        buttonRatedPosts.backgroundColor = .clear
+        buttonFindPosts.backgroundColor = .clear
+        buttonTags.backgroundColor = .clear
     }
     
     @objc private func didTapCreatedPostsButton() {
         changeMainControl(control: CreatedPostsControl())
+        buttonCreatedPosts.backgroundColor = ColorConverter.hexStringToUIColor(hex: "DCDCDC")
     }
     
     private func setupButtonRatedPosts() {
         buttonStack.addArrangedSubview(buttonRatedPosts)
         buttonRatedPosts.setTitle("RP", for: .normal)
-        buttonRatedPosts.addTarget(self, action: #selector(didTapRatesPostsButton), for: .touchUpInside)
+        buttonRatedPosts.addTarget(self, action: #selector(didTapRatedPostsButton), for: .touchUpInside)
     }
     
-    @objc private func didTapRatesPostsButton() {
+    @objc private func didTapRatedPostsButton() {
         changeMainControl(control: RatedPostsControl())
+        buttonRatedPosts.backgroundColor = ColorConverter.hexStringToUIColor(hex: "DCDCDC")
     }
     
     private func setupButtonFindPosts() {
@@ -83,10 +89,17 @@ class MainViewController: UIViewController {
     
     @objc private func didTapFindPostsButton() {
         changeMainControl(control: SearchPostsControl())
+        buttonFindPosts.backgroundColor = ColorConverter.hexStringToUIColor(hex: "DCDCDC")
     }
     
     private func setupButtonTags() {
         buttonStack.addArrangedSubview(buttonTags)
         buttonTags.setTitle("T", for: .normal)
+        buttonTags.addTarget(self, action: #selector(didTapTagsButton), for: .touchUpInside)
+    }
+    
+    @objc private func didTapTagsButton() {
+        changeMainControl(control: TagsControl())
+        buttonTags.backgroundColor = ColorConverter.hexStringToUIColor(hex: "DCDCDC")
     }
 }

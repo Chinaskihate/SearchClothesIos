@@ -34,6 +34,10 @@
 		40A5E43C27DE1D6F0016DEA7 /* SearchClothesIosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A5E43B27DE1D6F0016DEA7 /* SearchClothesIosTests.swift */; };
 		40A5E44727DE1D6F0016DEA7 /* SearchClothesIosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A5E44627DE1D6F0016DEA7 /* SearchClothesIosUITests.swift */; };
 		40D6D65227E02E7B00E0F965 /* TagsControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D6D65127E02E7B00E0F965 /* TagsControl.swift */; };
+		40D6D65527E0345B00E0F965 /* GetAllTagsCommandDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D6D65427E0345B00E0F965 /* GetAllTagsCommandDto.swift */; };
+		40D6D65727E03D2300E0F965 /* CreateTagCommandDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D6D65627E03D2300E0F965 /* CreateTagCommandDto.swift */; };
+		40D6D65A27E0459500E0F965 /* RatePostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D6D65927E0459500E0F965 /* RatePostDto.swift */; };
+		40D6D65C27E057B900E0F965 /* SearchMenuConrol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D6D65B27E057B900E0F965 /* SearchMenuConrol.swift */; };
 		58EF68005692F3D4C49A313E /* Pods_SearchClothesIos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECC0EEAB349B7F5F28D4EF5 /* Pods_SearchClothesIos.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +90,10 @@
 		40A5E44627DE1D6F0016DEA7 /* SearchClothesIosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchClothesIosUITests.swift; sourceTree = "<group>"; };
 		40A5E44827DE1D6F0016DEA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40D6D65127E02E7B00E0F965 /* TagsControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsControl.swift; sourceTree = "<group>"; };
+		40D6D65427E0345B00E0F965 /* GetAllTagsCommandDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllTagsCommandDto.swift; sourceTree = "<group>"; };
+		40D6D65627E03D2300E0F965 /* CreateTagCommandDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTagCommandDto.swift; sourceTree = "<group>"; };
+		40D6D65927E0459500E0F965 /* RatePostDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatePostDto.swift; sourceTree = "<group>"; };
+		40D6D65B27E057B900E0F965 /* SearchMenuConrol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMenuConrol.swift; sourceTree = "<group>"; };
 		7EE99D637DC31AA936246916 /* Pods-SearchClothesIos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchClothesIos.debug.xcconfig"; path = "Target Support Files/Pods-SearchClothesIos/Pods-SearchClothesIos.debug.xcconfig"; sourceTree = "<group>"; };
 		81CD817B9A704C5CF056F61A /* Pods-SearchClothesIos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchClothesIos.release.xcconfig"; path = "Target Support Files/Pods-SearchClothesIos/Pods-SearchClothesIos.release.xcconfig"; sourceTree = "<group>"; };
 		CECC0EEAB349B7F5F28D4EF5 /* Pods_SearchClothesIos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchClothesIos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +148,7 @@
 				402209B827E0023300963282 /* CreatedPostsControl.swift */,
 				402209BA27E005BD00963282 /* RatedPostsControl.swift */,
 				40D6D65127E02E7B00E0F965 /* TagsControl.swift */,
+				40D6D65B27E057B900E0F965 /* SearchMenuConrol.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -166,6 +175,8 @@
 		4051AFA327DE60B500D8FEE5 /* Jsons */ = {
 			isa = PBXGroup;
 			children = (
+				40D6D65827E0457500E0F965 /* Posts */,
+				40D6D65327E0343000E0F965 /* Tags */,
 				402209A827DF928100963282 /* FindPost */,
 				4051AFA427DE60C300D8FEE5 /* Authentication */,
 			);
@@ -250,6 +261,25 @@
 			);
 			name = Controllers;
 			path = SearchClothesIos/Controllers;
+			sourceTree = SOURCE_ROOT;
+		};
+		40D6D65327E0343000E0F965 /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				40D6D65427E0345B00E0F965 /* GetAllTagsCommandDto.swift */,
+				40D6D65627E03D2300E0F965 /* CreateTagCommandDto.swift */,
+			);
+			name = Tags;
+			path = SearchClothesIos/Jsons/Tags;
+			sourceTree = SOURCE_ROOT;
+		};
+		40D6D65827E0457500E0F965 /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				40D6D65927E0459500E0F965 /* RatePostDto.swift */,
+			);
+			name = Posts;
+			path = SearchClothesIos/Jsons/Posts;
 			sourceTree = SOURCE_ROOT;
 		};
 		49DBE82EF10AA2B86E249F3F /* Pods */ = {
@@ -453,6 +483,8 @@
 				40D6D65227E02E7B00E0F965 /* TagsControl.swift in Sources */,
 				402209B527DFDD3A00963282 /* TagCell.swift in Sources */,
 				402209AE27DFB71700963282 /* PostView.swift in Sources */,
+				40D6D65527E0345B00E0F965 /* GetAllTagsCommandDto.swift in Sources */,
+				40D6D65727E03D2300E0F965 /* CreateTagCommandDto.swift in Sources */,
 				402209B327DFCC8200963282 /* ColorConverter.swift in Sources */,
 				402209A027DF723200963282 /* User.swift in Sources */,
 				402209AC27DFB63000963282 /* PostCell.swift in Sources */,
@@ -463,12 +495,14 @@
 				402209C127E0124F00963282 /* VerificateCommandDto.swift in Sources */,
 				402209AA27DF92CD00963282 /* GetPostsCommandDto.swift in Sources */,
 				402209BD27E006D800963282 /* RegisterViewController.swift in Sources */,
+				40D6D65C27E057B900E0F965 /* SearchMenuConrol.swift in Sources */,
 				40A5E42927DE1D6E0016DEA7 /* LoginViewController.swift in Sources */,
 				402209B127DFC2FC00963282 /* UIViewPin.swift in Sources */,
 				402209A727DF86E500963282 /* SearchPostsControl.swift in Sources */,
 				4051AFA627DE610700D8FEE5 /* LoginCommandDto.swift in Sources */,
 				402209B727DFDD9A00963282 /* TagView.swift in Sources */,
 				402209A227DF7BC900963282 /* DataStorage.swift in Sources */,
+				40D6D65A27E0459500E0F965 /* RatePostDto.swift in Sources */,
 				40A5E42527DE1D6E0016DEA7 /* AppDelegate.swift in Sources */,
 				40A5E42727DE1D6E0016DEA7 /* SceneDelegate.swift in Sources */,
 			);

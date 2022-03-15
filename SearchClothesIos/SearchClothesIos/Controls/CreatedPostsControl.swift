@@ -130,7 +130,7 @@ class CreatedPostsControl: UIView {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data, let postList = try? JSONDecoder().decode(PostList.self, from: data) {
                 var storage = DataStorage.shared
-                storage.posts = postList
+                storage.postList = postList
             }
         }
         task.resume()

@@ -4,7 +4,6 @@
 //
 //  Created by user211270 on 3/14/22.
 //
-
 import Foundation
 import UIKit
 import Alamofire
@@ -130,7 +129,7 @@ class RatedPostsControl: UIView {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data, let postList = try? JSONDecoder().decode(PostList.self, from: data) {
                 var storage = DataStorage.shared
-                storage.posts = postList
+                storage.postList = postList
             }
         }
         task.resume()

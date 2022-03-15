@@ -31,12 +31,24 @@ class SearchPostsControl: UIView {
     }
     
     private func setup() {
+        setupKeyboard()
         setupSearchInput()
         setupFindButton()
         setupOptionsButton()
         setupScrollView()
         setupStackView()
         
+    }
+    
+    
+    
+    private func setupKeyboard() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        endEditing(true)
     }
     
     private func setupSearchInput() {
@@ -82,9 +94,9 @@ class SearchPostsControl: UIView {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsonLoginPost
         sendRequest(data: jsonLoginPost, request: request)
-        if(DataStorage.shared.posts != nil) {
-            for i in DataStorage.shared.posts!.posts {
-                print(DataStorage.shared.posts!.posts)
+        if(DataStorage.shared.postList != nil) {
+            for i in DataStorage.shared.postList!.posts {
+                print(DataStorage.shared.postList!.posts)
             }
         }
         getStackViewData()
@@ -167,14 +179,14 @@ class SearchPostsControl: UIView {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data, let postList = try? JSONDecoder().decode(PostList.self, from: data) {
                 var storage = DataStorage.shared
-                storage.posts = postList
+                storage.postList = postList
             }
         }
         task.resume()
     }
     
     private func getStackViewData() {
-        if (DataStorage.shared.posts == nil) {
+        if (DataStorage.shared.postList == nil) {
             return
         }
         stackView.arrangedSubviews
@@ -183,8 +195,8 @@ class SearchPostsControl: UIView {
         stackView.frame = scrollView.frame
         postCells = [PostCell]()
         var cell: PostCell = PostCell()
-        let posts = DataStorage.shared.posts!.posts
-        let numberOfCells = DataStorage.shared.posts!.posts.count
+        let posts = DataStorage.shared.postList!.posts
+        let numberOfCells = DataStorage.shared.postList!.posts.count
         if (numberOfCells == 0) {
             return
         }

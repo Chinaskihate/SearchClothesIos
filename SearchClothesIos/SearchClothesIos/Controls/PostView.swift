@@ -4,20 +4,26 @@
 //
 //  Created by user211270 on 3/14/22.
 //
-
+import Foundation
 import UIKit
+import Alamofire
+import SDWebImage
+import SwiftyJSON
 
 class PostView : UIView {
     var post: Post!
+    let jsonEncoder = JSONEncoder()
     private var tagCells = [TagCell]()
     
 
-    let titleLabel: UILabel = {
-        let control = UILabel()
-        control.font = UIFont.systemFont(ofSize: 20)
-        control.textAlignment = .center
-        control.textColor = UIColor.black
-        control.text = ""
+    let titleButton: UIButton = {
+        let control = UIButton()
+        control.backgroundColor = .clear
+        control.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        control.titleLabel?.textAlignment = .center
+        control.titleLabel?.textColor = UIColor.black
+        control.titleLabel?.text = ""
+        control.setTitleColor(UIColor.black, for: .normal)
         control.translatesAutoresizingMaskIntoConstraints = false // required
         return control
     }()
@@ -61,7 +67,7 @@ class PostView : UIView {
     
     func changePost(post: Post) {
         self.post = post
-        titleLabel.text = post.title
+        titleButton.setTitle(post.title, for: .normal)
         rateLabel.text = String(post.rate)
         getStackViewData()
     }
@@ -70,17 +76,64 @@ class PostView : UIView {
         backgroundColor = UIColor.white
         layer.cornerRadius = 15
         
-        setupTitleLabel()
+        setupTitleButton()
         setupRateLabel()
         setupScrollView()
         setupStackView()
     }
     
-    func setupTitleLabel() {
-        addSubview(titleLabel)
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+    func setupTitleButton() {
+        addSubview(titleButton)
+        titleButton.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
+        titleButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
+        titleButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        titleButton.addTarget(self, action: #selector(didTapTitleButton), for: .touchUpInside)
+    }
+    
+    @objc func didTapTitleButton() {
+        var dto = RatePostDto()
+        dto.token = DataStorage.shared.user!.token
+        dto.rate = 5
+        dto.postId = post.id
+        let ac = UIAlertController(title: "Rate post", message: nil, preferredStyle: .alert)
+        
+        let fiveRateAction = UIAlertAction(title: "5", style: .default, handler: { (action: UIAlertAction!) in
+            dto.rate = 5
+            self.rate(dto: dto)
+        })
+        let fourRateAction = UIAlertAction(title: "4", style: .default, handler: { (action: UIAlertAction!) in
+            dto.rate = 4
+            self.rate(dto: dto)
+        })
+        let threeRateAction = UIAlertAction(title: "3", style: .default, handler: { (action: UIAlertAction!) in
+            dto.rate = 3
+            self.rate(dto: dto)
+        })
+        let twoRateAction = UIAlertAction(title: "2", style: .default, handler: { (action: UIAlertAction!) in
+            dto.rate = 2
+            self.rate(dto: dto)
+        })
+        let oneRateAction = UIAlertAction(title: "1", style: .default, handler: { (action: UIAlertAction!) in
+            dto.rate = 1
+            self.rate(dto: dto)
+        })
+        ac.addAction(fiveRateAction)
+        ac.addAction(fourRateAction)
+        ac.addAction(threeRateAction)
+        ac.addAction(twoRateAction)
+        ac.addAction(oneRateAction)
+        getCurrentVC()?.present(ac, animated: true, completion: {() in
+            
+        })
+    }
+    
+    func rate(dto: RatePostDto) {
+        let jsonCreateTag = try! self.jsonEncoder.encode(dto)
+        var request = URLRequest(url: URL(string: "http://185.242.104.101/api/post/rate-post")!)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonCreateTag
+        self.sendRatePostRequest(data: jsonCreateTag, request: request)
     }
     
     func setupRateLabel() {
@@ -95,7 +148,7 @@ class PostView : UIView {
         scrollView.backgroundColor = ColorConverter.hexStringToUIColor(hex: "27282D")
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.layer.cornerRadius = 15
-        scrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
+        scrollView.topAnchor.constraint(equalTo: titleButton.bottomAnchor, constant: 5).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: rateLabel.topAnchor, constant: -5).isActive = true
@@ -168,7 +221,7 @@ class PostView : UIView {
     }
     
     override func layoutSubviews() {
-        scrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
+        scrollView.topAnchor.constraint(equalTo: titleButton.bottomAnchor, constant: 5).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: rateLabel.topAnchor, constant: -5).isActive = true
         
         stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 5).isActive = true
@@ -183,5 +236,26 @@ class PostView : UIView {
         
         scrollView.alwaysBounceVertical = true
         scrollView.automaticallyAdjustsScrollIndicatorInsets = false;
+    }
+    
+    func getCurrentVC() -> UIViewController? {
+        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+            var currentController: UIViewController! = rootController
+            while( currentController.presentedViewController != nil ) {
+                currentController = currentController.presentedViewController
+            }
+            return currentController
+        }
+        return nil
+    }
+    
+    private func sendRatePostRequest(data: Data, request: URLRequest) {
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data, let rateResult = try? JSONDecoder().decode(Bool?.self, from: data) {
+                let storage = DataStorage.shared
+                storage.ratePostResult = rateResult
+            }
+        }
+        task.resume()
     }
 }
