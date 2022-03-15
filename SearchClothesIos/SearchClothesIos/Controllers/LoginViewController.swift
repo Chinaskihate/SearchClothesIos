@@ -53,6 +53,7 @@ class LoginViewController: UIViewController {
         view.addSubview(passwordInput)
         passwordInput.layer.cornerRadius = 15
         passwordInput.layer.borderWidth = 2
+        passwordInput.textContentType = .oneTimeCode
         passwordInput.isSecureTextEntry = true
         passwordInput.backgroundColor = .white
         passwordInput.placeholder = "Enter your password"
@@ -133,4 +134,9 @@ class LoginViewController: UIViewController {
         }
         task.resume()
     }
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+            return true
+        }
 }

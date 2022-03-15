@@ -10,11 +10,14 @@ import UIKit
 class TagCell: UIView
 {
     public var tagView: TagView!
+    public var isSelected: Bool!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.tagView = TagView(frame: self.bounds)
+        self.isSelected = false
+        
         setup()
     }
     

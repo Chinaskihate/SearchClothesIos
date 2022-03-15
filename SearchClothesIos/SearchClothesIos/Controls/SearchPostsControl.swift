@@ -12,6 +12,7 @@ import SDWebImage
 import SwiftyJSON
 
 class SearchPostsControl: UIView {
+    var getPostsDto = GetPostsCommandDto()
     let jsonEncoder = JSONEncoder()
     let searchInput = UITextField()
     let findButton = UIButton()
@@ -84,16 +85,16 @@ class SearchPostsControl: UIView {
     
     @objc private func didTapFindButton() {
         var dto = GetPostsCommandDto(token: DataStorage.shared.user?.token,
-                                     title: searchInput.text,
-                                     tags: [],
-                                     minRate: 0)
+                                             title: searchInput.text,
+                                             tags: DataStorage.shared.getPostCommandDto?.tags ?? [],
+                                             minRate: DataStorage.shared.getPostCommandDto?.minRate ?? 0)
+        let jsonGetPosts = try! jsonEncoder.encode(dto)
         
-        let jsonLoginPost = try! jsonEncoder.encode(dto)
         var request = URLRequest(url: URL(string: "http://185.242.104.101/api/post/get-posts")!)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonLoginPost
-        sendRequest(data: jsonLoginPost, request: request)
+        request.httpBody = jsonGetPosts
+        sendRequest(data: jsonGetPosts, request: request)
         if(DataStorage.shared.postList != nil) {
             for i in DataStorage.shared.postList!.posts {
                 print(DataStorage.shared.postList!.posts)
@@ -114,6 +115,24 @@ class SearchPostsControl: UIView {
         optionsButton.leadingAnchor.constraint(equalTo: findButton.trailingAnchor, constant: 30).isActive = true
         optionsButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -30).isActive = true
         optionsButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -frame.height * 0.9).isActive = true
+        optionsButton.addTarget(self, action: #selector(didTapOptionsButton), for: .touchUpInside)
+    }
+    
+    @objc private func didTapOptionsButton() {
+        var menuControl = SearchMenuControl()
+        let vc = UIViewController()
+        vc.view.addSubview(menuControl)
+        vc.view.backgroundColor = ColorConverter.hexStringToUIColor(hex: "27282D")
+        menuControl.frame = CGRect(x: 30, y: 100, width: getCurrentVC()!.view.frame.width - 60, height: getCurrentVC()!.view.frame.height - 200)
+//        menuControl.topAnchor.constraint(equalTo: vc.view.topAnchor).isActive = true
+//        menuControl.leadingAnchor.constraint(equalTo: vc.view.leadingAnchor).isActive = true
+//        menuControl.trailingAnchor.constraint(equalTo: vc.view.trailingAnchor).isActive = true
+//        menuControl.bottomAnchor.constraint(equalTo: vc.view.bottomAnchor).isActive = true
+        let navVC = UINavigationController(rootViewController: vc)
+        navVC.modalPresentationStyle = .fullScreen
+        navVC.title = "Search options"
+        // navVC.isNavigationBarHidden = true
+        getCurrentVC()?.present(navVC, animated: true)
     }
     
     private func setupStackView() {
@@ -207,7 +226,7 @@ class SearchPostsControl: UIView {
         }
         
         postCells.sort(by: {(first: PostCell, second: PostCell) -> Bool in
-            first.postView.post.rate < second.postView.post.rate
+            first.postView.post.rate > second.postView.post.rate
         })
         
         var top = 5
@@ -230,5 +249,16 @@ class SearchPostsControl: UIView {
             top += Int(stackView.frame.height) / 4
        }
         sendSubviewToBack(scrollView)
+    }
+    
+    func getCurrentVC() -> UIViewController? {
+        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+            var currentController: UIViewController! = rootController
+            while( currentController.presentedViewController != nil ) {
+                currentController = currentController.presentedViewController
+            }
+            return currentController
+        }
+        return nil
     }
 }

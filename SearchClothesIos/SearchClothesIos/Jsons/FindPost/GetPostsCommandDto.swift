@@ -11,5 +11,5 @@ struct GetPostsCommandDto: Encodable {
     var token: String?;
     var title: String?;
     var tags: [Tag]?;
-    var minRate: Int;
+    var minRate: Float?;
 }

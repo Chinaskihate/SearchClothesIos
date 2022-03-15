@@ -14,6 +14,7 @@ class DataStorage {
     public var tagList: TagList?
     public var createTagResult: Bool?
     public var ratePostResult: Bool?
+    public var getPostCommandDto: GetPostsCommandDto?
     
     static var shared: DataStorage = {
         let instance = DataStorage()
