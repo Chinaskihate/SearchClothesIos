@@ -44,5 +44,6 @@ class TagView : UIView {
         tagLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
         tagLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
         tagLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-    }
+        tagLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+     }
 }

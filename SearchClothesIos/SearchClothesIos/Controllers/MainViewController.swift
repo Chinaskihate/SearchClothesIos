@@ -15,21 +15,22 @@ class MainViewController: UIViewController {
     let buttonRatedPosts = UIButton()
     let buttonFindPosts = UIButton()
     let buttonTags = UIButton()
-    var mainControl = SearchPostsControl()
+    var mainControl: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ColorConverter.hexStringToUIColor(hex: "27282D")
+        mainControl = SearchPostsControl()
         setupButtonStack()
         setupButtonCreatedPosts()
         setupButtonRatedPosts()
         setupButtonFindPosts()
         setupButtonTags()
-        setupSearchPostsControl()
+        setupMainControl()
         view.bringSubviewToFront(buttonStack)
     }
     
-    private func setupSearchPostsControl() {
+    private func setupMainControl() {
         view.addSubview(mainControl)
         mainControl.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height - CGFloat(100))
         view.sendSubviewToBack(mainControl)
@@ -48,20 +49,40 @@ class MainViewController: UIViewController {
     private func setupButtonCreatedPosts() {
         buttonStack.addArrangedSubview(buttonCreatedPosts)
         buttonCreatedPosts.setTitle("CP", for: .normal)
-//        buttonCreatedPosts.frame = CGRect(x: 0, y: view.frame.size.height - buttonStack.frame.size.height,
-//                                          width: CGFloat(25), height: buttonStack.frame.height)
+        buttonCreatedPosts.addTarget(self, action: #selector(didTapCreatedPostsButton), for: .touchUpInside)
+    }
+    
+    private func changeMainControl(control: UIView) {
+        if (mainControl != nil) {
+            mainControl.removeFromSuperview()
+        }
+        mainControl = control
+        view.addSubview(mainControl)
+        setupMainControl()
+    }
+    
+    @objc private func didTapCreatedPostsButton() {
+        changeMainControl(control: CreatedPostsControl())
     }
     
     private func setupButtonRatedPosts() {
         buttonStack.addArrangedSubview(buttonRatedPosts)
         buttonRatedPosts.setTitle("RP", for: .normal)
-        
+        buttonRatedPosts.addTarget(self, action: #selector(didTapRatesPostsButton), for: .touchUpInside)
+    }
+    
+    @objc private func didTapRatesPostsButton() {
+        changeMainControl(control: RatedPostsControl())
     }
     
     private func setupButtonFindPosts() {
         buttonStack.addArrangedSubview(buttonFindPosts)
         buttonFindPosts.setTitle("FP", for: .normal)
-        
+        buttonFindPosts.addTarget(self, action: #selector(didTapFindPostsButton), for: .touchUpInside)
+    }
+    
+    @objc private func didTapFindPostsButton() {
+        changeMainControl(control: SearchPostsControl())
     }
     
     private func setupButtonTags() {

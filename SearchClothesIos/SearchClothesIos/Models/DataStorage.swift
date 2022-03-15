@@ -10,6 +10,7 @@ import Foundation
 class DataStorage {
     public var user: User?
     public var posts: PostList?
+    public var registrationResult: Int?
     
     static var shared: DataStorage = {
         let instance = DataStorage()

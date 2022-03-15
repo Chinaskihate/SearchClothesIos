@@ -11,9 +11,8 @@ import Alamofire
 import SDWebImage
 import SwiftyJSON
 
-class SearchPostsControl: UIView {
+class CreatedPostsControl: UIView {
     let jsonEncoder = JSONEncoder()
-    let searchInput = UITextField()
     let findButton = UIButton()
     let optionsButton = UIButton()
     let stackView = UIStackView()
@@ -31,26 +30,10 @@ class SearchPostsControl: UIView {
     }
     
     private func setup() {
-        setupSearchInput()
         setupFindButton()
         setupOptionsButton()
         setupScrollView()
         setupStackView()
-        
-    }
-    
-    private func setupSearchInput() {
-        addSubview(searchInput)
-        searchInput.backgroundColor = ColorConverter.hexStringToUIColor(hex: "DCDCDC")
-        searchInput.translatesAutoresizingMaskIntoConstraints = false
-        searchInput.layer.cornerRadius = 15
-        searchInput.layer.borderWidth = 2
-        searchInput.placeholder = "Post title"
-        //let space = frame.
-        searchInput.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
-        searchInput.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30).isActive = true
-        searchInput.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -30).isActive = true
-        searchInput.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -frame.height * 0.9).isActive = true
         
     }
     
@@ -64,30 +47,14 @@ class SearchPostsControl: UIView {
         findButton.layer.cornerRadius = 15
         findButton.layer.borderWidth = 2
         findButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
-        findButton.leadingAnchor.constraint(equalTo: searchInput.trailingAnchor, constant: 30).isActive = true
+        findButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 30).isActive = true
         findButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -30).isActive = true
         findButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -frame.height * 0.9).isActive = true
         findButton.addTarget(self, action: #selector(didTapFindButton), for: .touchUpInside)
     }
     
     @objc private func didTapFindButton() {
-        var dto = GetPostsCommandDto(token: DataStorage.shared.user?.token,
-                                     title: searchInput.text,
-                                     tags: [],
-                                     minRate: 0)
         
-        let jsonLoginPost = try! jsonEncoder.encode(dto)
-        var request = URLRequest(url: URL(string: "http://185.242.104.101/api/post/get-posts")!)
-        request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonLoginPost
-        sendRequest(data: jsonLoginPost, request: request)
-        if(DataStorage.shared.posts != nil) {
-            for i in DataStorage.shared.posts!.posts {
-                print(DataStorage.shared.posts!.posts)
-            }
-        }
-        getStackViewData()
     }
     
     private func setupOptionsButton() {
@@ -128,14 +95,10 @@ class SearchPostsControl: UIView {
     }
     
     override func layoutSubviews() {
-        searchInput.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,
-                                            constant: -frame.height * 0.85).isActive = true
-        searchInput.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,
-                                              constant: -(30 + frame.width * 0.25)).isActive = true
         
         findButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,
                                             constant: -frame.height * 0.85).isActive = true
-        findButton.leadingAnchor.constraint(equalTo: searchInput.trailingAnchor,
+        findButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,
                                               constant: 5).isActive = true
         findButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,
                                               constant: -frame.width * 0.175).isActive = true
@@ -147,7 +110,7 @@ class SearchPostsControl: UIView {
         optionsButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,
                                               constant: -30).isActive = true
         
-        scrollView.topAnchor.constraint(equalTo: searchInput.bottomAnchor, constant: 15).isActive = true
+        scrollView.topAnchor.constraint(equalTo: findButton.bottomAnchor, constant: 15).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 20).isActive = true
         
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 15).isActive = true
@@ -174,7 +137,7 @@ class SearchPostsControl: UIView {
     }
     
     private func getStackViewData() {
-        if (DataStorage.shared.posts == nil) {
+        if (DataStorage.shared.user == nil) {
             return
         }
         stackView.arrangedSubviews
@@ -183,8 +146,8 @@ class SearchPostsControl: UIView {
         stackView.frame = scrollView.frame
         postCells = [PostCell]()
         var cell: PostCell = PostCell()
-        let posts = DataStorage.shared.posts!.posts
-        let numberOfCells = DataStorage.shared.posts!.posts.count
+        let posts = DataStorage.shared.user!.createdPosts.posts
+        let numberOfCells = posts.count
         if (numberOfCells == 0) {
             return
         }
@@ -215,7 +178,8 @@ class SearchPostsControl: UIView {
             cell.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 15).isActive = true
             cell.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -15).isActive = true
             //cell.setHeight(to: Double(stackView.frame.height) * 0.5)
-            top += Int(stackView.frame.height) / 4
+            top += 100
+            //top += Int(stackView.frame.height) / 4
        }
         sendSubviewToBack(scrollView)
     }

@@ -155,17 +155,16 @@ class PostView : UIView {
             stackView.addArrangedSubview(cell)
             stackView.sendSubviewToBack(cell)
             
-            
-            // cell.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
-            // cell.setHeight(to: Double(stackView.frame.height)/5)
-            
-            // cell.setWidth(to: Double(stackView))
             cell.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 5).isActive = true
+            cell.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -5).isActive = true
             cell.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: CGFloat(left)).isActive = true
-            cell.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -150).isActive = true
-            left += Int(stackView.frame.width) / 4
+            cell.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -5).isActive = true
+            //left += Int(stackView.frame.width) / 4
+            left += 100
+            print(stackView.frame.width)
        }
         sendSubviewToBack(scrollView)
+        layoutSubviews()
     }
     
     override func layoutSubviews() {
@@ -175,13 +174,14 @@ class PostView : UIView {
         stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 5).isActive = true
         stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
-        
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         
         scrollView.contentSize = CGSize(
-            width: self.scrollView.frame.width,
+            width: self.frame.width,
             height: stackView.frame.height
         )
         
         scrollView.alwaysBounceVertical = true
+        scrollView.automaticallyAdjustsScrollIndicatorInsets = false;
     }
 }

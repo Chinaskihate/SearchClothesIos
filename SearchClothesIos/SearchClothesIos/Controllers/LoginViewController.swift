@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     let emailInput = UITextField()
     let passwordInput = UITextField()
     let loginButton = UIButton()
+    let registerButton = UIButton()
     let jsonEncoder = JSONEncoder()
     
     override func viewDidLoad() {
@@ -25,7 +26,8 @@ class LoginViewController: UIViewController {
         setupLoginLabel()
         setupEmailInput()
         setupPasswordInput()
-        setupButton()
+        setupLoginButton()
+        setupRegisterButton()
         view.backgroundColor = ColorConverter.hexStringToUIColor(hex: "27282D")
     }
     
@@ -41,13 +43,19 @@ class LoginViewController: UIViewController {
     private func setupEmailInput() {
         view.addSubview(emailInput)
         emailInput.backgroundColor = .white
+        emailInput.layer.cornerRadius = 15
+        emailInput.layer.borderWidth = 2
+        emailInput.placeholder = "Enter your email"
         emailInput.frame = CGRect(x: 100, y: 200, width: 200, height: 52)
     }
     
     private func setupPasswordInput() {
         view.addSubview(passwordInput)
+        passwordInput.layer.cornerRadius = 15
+        passwordInput.layer.borderWidth = 2
         passwordInput.isSecureTextEntry = true
         passwordInput.backgroundColor = .white
+        passwordInput.placeholder = "Enter your password"
         passwordInput.frame = CGRect(x: 100, y: 400, width: 200, height: 52)
         
     }
@@ -56,20 +64,34 @@ class LoginViewController: UIViewController {
         loginLabel.textAlignment = NSTextAlignment.center
         loginLabel.text = "Login"
         loginLabel.textColor = .white
+        loginLabel.layer.cornerRadius = 15
+        loginLabel.layer.borderWidth = 2
         loginLabel.font = UIFont(name: loginLabel.font.fontName, size: 40)
         view.addSubview(loginLabel)
         loginLabel.backgroundColor = .clear
         loginLabel.frame = CGRect(x: 100, y: 100, width: 200, height: 52)
     }
     
-    private func setupButton() {
+    private func setupLoginButton() {
         loginButton.setTitle("Login", for: .normal)
         view.addSubview(loginButton)
         loginButton.backgroundColor = ColorConverter.hexStringToUIColor(hex: "D0C3BD")
         loginButton.setTitleColor(.black, for: .normal)
         loginButton.layer.cornerRadius = 15
-        loginButton.frame = CGRect(x: 100, y: 600, width: 200, height: 52)
+        loginButton.layer.borderWidth = 2
+        loginButton.frame = CGRect(x: 100, y: 670, width: 200, height: 52)
         loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
+    }
+    
+    private func setupRegisterButton() {
+        registerButton.setTitle("Register", for: .normal)
+        view.addSubview(registerButton)
+        registerButton.backgroundColor = ColorConverter.hexStringToUIColor(hex: "D0C3BD")
+        registerButton.setTitleColor(.black, for: .normal)
+        registerButton.layer.cornerRadius = 15
+        registerButton.layer.borderWidth = 2
+        registerButton.frame = CGRect(x: 100, y: 600, width: 200, height: 52)
+        registerButton.addTarget(self, action: #selector(didTapRegisterButton), for: .touchUpInside)
     }
 
     @objc private func didTapLoginButton() {
@@ -90,6 +112,16 @@ class LoginViewController: UIViewController {
             navVC.isNavigationBarHidden = true
             present(navVC, animated: true)
         }
+    }
+    
+    @objc private func didTapRegisterButton() {
+        let rootVC = RegisterViewController()
+        rootVC.title = "Regitser"
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        navVC.isNavigationBarHidden = true
+        present(navVC, animated: true)
+        
     }
     
     private func sendRequest(data: Data, request: URLRequest) {
